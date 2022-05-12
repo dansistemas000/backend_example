@@ -14,24 +14,16 @@ use App\Http\Core\Domain\Headers;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('home', function () {
-    return view('welcome');
-});
+Route::resource('users','UsersController');
 
-/* inicio rutas dar de baja folio */
+Route::resource('posts/{userid}/','UserPostsController');
 
-Route::get('unsubscribe_folios_form', function () {
-    $headers = Headers::HEADERFOLIOS;
-    return view('welcome',["view"=>"unsubscribe_folios_form","headers"=>$headers]);
-});
+Route::resource('albums/{userid}/','UserAlbumsController');
 
-Route::resource('unsubscribe_folios', 'UnsubscribeFolio\UnsubscribeFolioController');
+Route::resource('photos/{albumid}/','AlbumsPhotosController');
 
 
-/* fin rutas dar de baja folio */
+
 
 
